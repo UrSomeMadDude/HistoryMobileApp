@@ -7,7 +7,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import MainScreen from './screens/MainScreen'
 import LoginScreen from './screens/LoginScreen/LoginScreen'
 import ButtonStyled from './components/ButtonStyled/ButtonStyled'
-import RegistrationScreen from './screens/RegistrationScreen'
+import RegistrationScreen from './screens/RegistartionScreen/RegistrationScreen'
 
 export default function App() {
   const Stack = createNativeStackNavigator()
@@ -34,15 +34,15 @@ export default function App() {
             }}
           >
             <Stack.Screen
-              name='Login'
+              name="Login"
               component={LoginScreen}
             />
             <Stack.Screen
-              name='Register'
+              name="Register"
               component={RegistrationScreen}
             />
             <Stack.Screen
-              name='Main'
+              name="Main"
               component={MainScreen}
             />
           </Stack.Navigator>
@@ -51,9 +51,9 @@ export default function App() {
     )
   } else {
     return (
-      <View>
-        <Text>loading...</Text>
-      </View>
+      <SafeAreaView style={globalStyles.droidSafeArea}>
+        <Text>Загрузка...</Text>
+      </SafeAreaView>
     )
   }
 }

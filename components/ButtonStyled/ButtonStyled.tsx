@@ -6,13 +6,14 @@ import TextStyled from '../TextStyled'
 interface IButtonProps {
   onPress: () => void
   title: string
-  color: string
+  color: 'primary' | 'secondary'
   size: string
+  disabled?: boolean
 }
 
 const buttonColors = {
-  primary: '#40005ED9',
-  secondary: '#C53180',
+  primary: '#990061',
+  secondary: '#40005E',
 }
 
 const buttonSizes = {
@@ -31,16 +32,18 @@ const ButtonStyled = (props: IButtonProps) => {
     <TouchableOpacity
       onPress={props.onPress}
       touchSoundDisabled
+      disabled={props.disabled}
       style={[
         buttonStyles.button,
         {
           backgroundColor: buttonColors[props.color],
           width: buttonSizes[props.size].width,
           height: buttonSizes[props.size].height,
+          opacity: props.disabled ? 0.5 : 1,
         },
       ]}
     >
-      <TextStyled variant='h5'> {props.title} </TextStyled>
+      <TextStyled variant="h5"> {props.title} </TextStyled>
     </TouchableOpacity>
   )
 }

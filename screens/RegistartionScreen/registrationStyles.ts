@@ -1,25 +1,13 @@
 import { StyleSheet } from 'react-native'
 
-export default StyleSheet.create({
+const registrationStyles = StyleSheet.create({
   container: {
     display: 'flex',
-    alignItems: 'center',
     flexDirection: 'column',
-    width: '100%',
-    height: '100%',
-    backgroundColor: '#fff',
-  },
-  image: {
-    marginTop: 30,
-  },
-  text: {
-    marginTop: 20,
-  },
-  formSection: {
-    display: 'flex',
-    flexDirection: 'column',
+    justifyContent: 'center',
     alignItems: 'center',
-    gap: 19,
+    gap: 15,
+    marginTop: 50,
   },
   formContainer: {
     display: 'flex',
@@ -33,6 +21,7 @@ export default StyleSheet.create({
     paddingRight: 25,
     paddingBottom: 29,
     borderRadius: 30,
-    marginTop: 30,
   },
 })
+
+export default registrationStyles

@@ -18,17 +18,29 @@ const textVariants: ITextVariants = {
     fontSize: 16,
   },
   h2: {
-    fontWeight: '500',
-    fontSize: 36,
+    fontWeight: '700',
+    fontSize: 32,
+  },
+  h4: {
+    fontWeight: '700',
+    fontSize: 28,
   },
   h5: {
     fontWeight: '500',
     fontSize: 18,
     color: '#fff',
   },
+  error: {
+    fontWeight: 500,
+    fontSize: 14,
+    color: 'red',
+  },
 }
 
-const TextStyled = ({ children, variant }): ReactElement<React.FC> => {
+const TextStyled = (
+  { children, variant },
+  { ...props }
+): ReactElement<React.FC> => {
   return (
     <View>
       <Text
@@ -40,6 +52,7 @@ const TextStyled = ({ children, variant }): ReactElement<React.FC> => {
             color: textVariants[variant].color,
           },
         ]}
+        {...props}
       >
         {children}
       </Text>

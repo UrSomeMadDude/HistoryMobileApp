@@ -3,12 +3,14 @@ import React, { ChangeEvent, useState } from 'react'
 import textFieldStyles from './textFieldStyles'
 import TextStyled from '../TextStyled'
 import Icon from 'react-native-vector-icons/Ionicons'
+import ErrorMessage from '../ErrorMessage'
 
 interface ITextFieldProps {
   value: string
   onChange: (e: string | ChangeEvent<any>) => void
   placeholder: string
   type: string
+  error?: string
 }
 
 const TextField = (props: ITextFieldProps) => {
@@ -41,18 +43,19 @@ const TextField = (props: ITextFieldProps) => {
               style={{
                 fontSize: 22,
               }}
-              name='eye'
+              name="eye"
             />
           ) : (
             <Icon
               style={{
                 fontSize: 22,
               }}
-              name='eye-off'
+              name="eye-off"
             />
           )}
         </TouchableOpacity>
       )}
+      {props.error && <ErrorMessage text={props.error} />}
     </View>
   )
 }
