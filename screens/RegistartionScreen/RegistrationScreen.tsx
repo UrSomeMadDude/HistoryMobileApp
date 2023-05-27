@@ -1,11 +1,4 @@
-import {
-  Keyboard,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native'
+import { Keyboard, ScrollView, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import ButtonStyled from '../../components/ButtonStyled/ButtonStyled'
 import registrationStyles from './registrationStyles'
@@ -32,14 +25,7 @@ const RegistrationScreen = ({ navigation }) => {
             enableReinitia
             validationSchema={validationSchema}
           >
-            {({
-              values,
-              handleChange,
-              handleSubmit,
-              errors,
-              isValid,
-              dirty,
-            }) => {
+            {({ values, handleChange, handleSubmit, isValid, dirty }) => {
               return (
                 <View style={registrationStyles.formContainer}>
                   <TextField

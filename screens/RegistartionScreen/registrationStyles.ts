@@ -6,8 +6,12 @@ const registrationStyles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+    width: '100%',
+    height: '100%',
     gap: 15,
-    marginTop: 50,
+    paddingTop: 50,
+    paddingBottom: 150,
+    backgroundColor: '#FCFCFC',
   },
   formContainer: {
     display: 'flex',

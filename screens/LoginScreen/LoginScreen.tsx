@@ -30,7 +30,7 @@ const LoginScreen = ({ navigation }): ReactElement<React.FC> => {
           enableReinitialize
           initialValues={INITIAL_VALUES}
           onSubmit={(values) => {
-            console.log(values)
+            navigation.replace('Main')
           }}
         >
           {({ handleChange, handleSubmit, values }) => (
