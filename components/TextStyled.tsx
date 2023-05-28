@@ -18,12 +18,19 @@ interface ITextVariants {
   sectionOption: IFontProps
   headerTitle: IFontProps
   lessonTitle: IFontProps
+  profileName: IFontProps
 }
 
 const textVariants: ITextVariants = {
   regular: {
     fontWeight: '400',
     fontSize: 16,
+  },
+  profileName: {
+    fontSize: 24,
+    fontWeight: '700',
+    color: '#000',
+    lineHeight: 30,
   },
   headerTitle: {
     fontSize: 24,
@@ -54,7 +61,7 @@ const textVariants: ITextVariants = {
     fontWeight: '700',
   },
   sectionOption: {
-    fontSize: 14,
+    fontSize: 17,
     fontWeight: '600',
     color: '#1362CF',
     lineHeight: 17.05,

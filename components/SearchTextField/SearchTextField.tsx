@@ -5,18 +5,21 @@ import Icon from 'react-native-vector-icons/Ionicons'
 
 interface ISearchTextField {
   title?: string
-  onChange?: () => void
+  onChange?: (e: any) => void
+  value?: string
 }
 
 const SearchTextField: React.FC<ISearchTextField> = ({
   title = '',
+  value,
   onChange,
 }) => {
   return (
     <View style={styles.searchTextField}>
       <TextInput
         placeholder={title}
-        onChange={onChange}
+        onChangeText={onChange}
+        value={value}
       />
       <View style={styles.search}>
         <Icon

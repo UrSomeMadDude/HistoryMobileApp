@@ -1,10 +1,10 @@
 import { TouchableOpacity, View } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './styles'
 import TextStyled from '../TextStyled'
 
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, StackActions } from '@react-navigation/native'
 
 interface HeaderProps {
   text?: string
@@ -18,6 +18,8 @@ const Header: React.FC<HeaderProps> = ({
   noIcons = false,
 }) => {
   const navigation = useNavigation()
+  const [isTapped, setIsTapped] = useState(false)
+
   if (noIcons) {
     return (
       <View
@@ -49,13 +51,50 @@ const Header: React.FC<HeaderProps> = ({
         />
       </TouchableOpacity>
       <TextStyled variant="headerTitle">{text}</TextStyled>
-      <TouchableOpacity onPress={() => navigation.navigate('#')}>
+
+      <TouchableOpacity
+        style={
+          noIcons && isTapped
+            ? [styles.button, styles.transformed]
+            : styles.button
+        }
+        onPress={
+          icon !== 'menu-outline'
+            ? () => navigation.navigate('Profile')
+            : () => {
+                setIsTapped(!isTapped)
+              }
+        }
+      >
         <Ionicons
           name={icon}
           size={24}
           color="#3C1251"
         />
       </TouchableOpacity>
+      {isTapped && (
+        <View style={styles.dropdownList}>
+          <TouchableOpacity onPress={() => {}}>
+            <Ionicons
+              name="cart-outline"
+              size={24}
+              color="#3C1251"
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.dispatch(StackActions.popToTop())
+              navigation.dispatch(StackActions.replace('Login'))
+            }}
+          >
+            <Ionicons
+              name="exit-outline"
+              size={24}
+              color="#3C1251"
+            />
+          </TouchableOpacity>
+        </View>
+      )}
     </View>
   )
 }

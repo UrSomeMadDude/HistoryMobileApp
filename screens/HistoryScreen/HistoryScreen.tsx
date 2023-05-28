@@ -5,19 +5,37 @@ import {
   ScrollView,
   KeyboardAvoidingView,
 } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import styles, { optionsListFirst, optionsListSecond } from './styles'
 import TextStyled from '../../components/TextStyled'
 import SearchTextField from '../../components/SearchTextField/SearchTextField'
 import Header from '../../components/Header/Header'
+import { themesList } from './config'
+import ModalWindow from '../../components/ModalWindow/ModalWindow'
 
 const HistoryScreen = ({ navigation }) => {
+  const [modalVisible, setModalVisible] = useState(false)
+  const [themeOptions, setThemeOptions] = useState([...optionsListFirst])
+
+  //временное решение для реализации логики серча
+  const [themes, setThemes] = useState(themesList)
+  const [text, setText] = useState('')
+
   return (
-    <KeyboardAvoidingView
-      style={{
-        paddingBottom: 50,
-      }}
-    >
+    <KeyboardAvoidingView>
+      <ModalWindow
+        isVisible={modalVisible}
+        onAction={() => {
+          navigation.navigate('HistoryLesson', {
+            title:
+              'Внешнеполитические связи России с Европой и Азией в конце XVI — начале XVII в.',
+            id: 1,
+          })
+          setModalVisible(false)
+        }}
+        onClose={() => setModalVisible(false)}
+        options={themeOptions}
+      />
       <Header text="История" />
       <TouchableOpacity
         onPress={() => {
@@ -25,55 +43,38 @@ const HistoryScreen = ({ navigation }) => {
         }}
         activeOpacity={1}
       >
-        <ScrollView nestedScrollEnabled>
+        <View style={styles.searchText}>
+          <SearchTextField
+            title="Поиск по темам"
+            value={text}
+            onChange={(text) => {
+              setText(text)
+              if (text === '') {
+                setThemes(themeOptions)
+              }
+              setThemes(themesList.filter((theme) => theme.includes(text)))
+            }}
+          />
+        </View>
+        <ScrollView
+          nestedScrollEnabled
+          contentContainerStyle={{
+            display: 'flex',
+            width: '100%',
+          }}
+        >
           <View style={styles.history}>
-            <SearchTextField title="Поиск по темам" />
-            <TextStyled variant="sectionTitle">
-              ИСТОРИЯ РОССИИ С ДРЕВНЕЙШИХ ВРЕМЕН ДО НАЧАЛА XVI В.
-            </TextStyled>
-            <View style={styles.list}>
-              <ScrollView nestedScrollEnabled>
-                <View style={styles.subList}>
-                  {optionsListFirst.map((option, i) => (
-                    <TouchableOpacity
-                      key={i}
-                      onPress={() =>
-                        navigation.navigate('HistoryLesson', {
-                          title: option,
-                          id: i,
-                        })
-                      }
-                    >
-                      <TextStyled variant="sectionOption">{option}</TextStyled>
-                    </TouchableOpacity>
-                  ))}
-                </View>
-              </ScrollView>
-            </View>
-
-            <TextStyled variant="sectionTitle">
-              ИСТОРИЯ РОССИИ (XVI-XVII ВВ.)
-            </TextStyled>
-
-            <View style={styles.list}>
-              <ScrollView nestedScrollEnabled>
-                <View style={styles.subList}>
-                  {optionsListSecond.map((option, i) => (
-                    <TouchableOpacity
-                      key={i}
-                      onPress={() =>
-                        navigation.push('HistoryLesson', {
-                          title: option,
-                          id: i,
-                        })
-                      }
-                    >
-                      <TextStyled variant="sectionOption">{option}</TextStyled>
-                    </TouchableOpacity>
-                  ))}
-                </View>
-              </ScrollView>
-            </View>
+            {themes.map((theme, i) => (
+              <TouchableOpacity
+                key={i}
+                onPress={() => {
+                  setThemeOptions(optionsListSecond)
+                  setModalVisible(true)
+                }}
+              >
+                <TextStyled variant="sectionTitle">{theme}</TextStyled>
+              </TouchableOpacity>
+            ))}
           </View>
         </ScrollView>
       </TouchableOpacity>

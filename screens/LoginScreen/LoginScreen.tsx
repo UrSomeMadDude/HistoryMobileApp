@@ -60,7 +60,7 @@ const LoginScreen = ({ navigation }): ReactElement<React.FC> => {
               <TextStyled variant="regular">Не зарегистрированы?</TextStyled>
               <ButtonStyled
                 onPress={() => {
-                  navigation.push('Register')
+                  navigation.navigate('Register')
                 }}
                 title="Зарегистрироваться"
                 size="long"

@@ -4,14 +4,33 @@ import styles from './styles'
 
 interface ILidMagnet {
   title: string
-  onPress: () => void
+  subtext?: string | number
+  onPress?: () => void
+  disabled?: boolean
 }
 
-const LidMagnet: React.FC<ILidMagnet> = ({ onPress, title }) => {
+const LidMagnet: React.FC<ILidMagnet> = ({
+  onPress = () => {},
+  title,
+  subtext = '',
+  disabled = false,
+}) => {
   return (
-    <TouchableOpacity onPress={onPress}>
-      <View style={styles.lidMagnet}>
-        <Text style={styles.lidMagnetText}>{title}</Text>
+    <TouchableOpacity
+      disabled={disabled}
+      onPress={onPress}
+    >
+      <View style={disabled ? styles.lidMagnetAlternative : styles.lidMagnet}>
+        <Text
+          style={
+            disabled
+              ? [styles.lidMagnetText, { color: '#313131', marginLeft: 12 }]
+              : styles.lidMagnetText
+          }
+        >
+          {title}
+        </Text>
+        <Text style={styles.subtext}>{subtext}</Text>
       </View>
     </TouchableOpacity>
   )

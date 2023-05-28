@@ -13,6 +13,7 @@ export default StyleSheet.create({
     backgroundColor: '#F4EEF7',
     borderRadius: 14,
     paddingLeft: 16,
+    paddingRight: 30,
   },
   search: {
     position: 'absolute',

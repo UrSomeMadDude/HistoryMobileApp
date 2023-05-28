@@ -1,6 +1,6 @@
 import * as Font from 'expo-font'
 import React, { useEffect, useState } from 'react'
-import { Text, SafeAreaView } from 'react-native'
+import { Text, SafeAreaView, StatusBar } from 'react-native'
 import globalStyles from './globalStyles'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
@@ -8,6 +8,7 @@ import MainScreen from './screens/MainScreen'
 import LoginScreen from './screens/LoginScreen/LoginScreen'
 import RegistrationScreen from './screens/RegistartionScreen/RegistrationScreen'
 import HistoryLessonScreen from './screens/HistoryLessonScreen/HistoryLessonScreen'
+import ProfileScreen from './screens/ProfileScreen/ProfileScreen'
 
 export default function App() {
   const Stack = createNativeStackNavigator()
@@ -26,7 +27,12 @@ export default function App() {
 
   if (fontsLoaded) {
     return (
-      <SafeAreaView style={globalStyles.droidSafeArea}>
+      <>
+        <StatusBar
+          animated={true}
+          backgroundColor="#fff"
+          barStyle="dark-content"
+        />
         <NavigationContainer>
           <Stack.Navigator
             screenOptions={{
@@ -49,9 +55,13 @@ export default function App() {
               name="HistoryLesson"
               component={HistoryLessonScreen}
             />
+            <Stack.Screen
+              name="Profile"
+              component={ProfileScreen}
+            />
           </Stack.Navigator>
         </NavigationContainer>
-      </SafeAreaView>
+      </>
     )
   } else {
     return (

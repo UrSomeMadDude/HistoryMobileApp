@@ -1,6 +1,14 @@
 import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
+  searchText: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#FCFCFC',
+    paddingTop: 25,
+  },
+
   history: {
     display: 'flex',
     justifyContent: 'flex-start',
@@ -9,15 +17,17 @@ export default StyleSheet.create({
     width: '100%',
     height: '100%',
     color: '#40005E',
-    paddingTop: 18,
-    gap: 20,
+    paddingTop: 25,
+    gap: 25,
     paddingHorizontal: 20,
     backgroundColor: '#FCFCFC',
+    overflow: 'scroll',
+    paddingBottom: 300,
   },
 
   list: {
     display: 'flex',
-    maxWidth: '100%',
+    maxWidth: '90%',
     minWidth: 300,
     height: 320,
     overflow: 'scroll',
