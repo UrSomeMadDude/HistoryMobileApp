@@ -1,21 +1,16 @@
-import {
-  Keyboard,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native'
+import { Keyboard, ScrollView, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import ButtonStyled from '../../components/ButtonStyled/ButtonStyled'
 import registrationStyles from './registrationStyles'
 import TextStyled from '../../components/TextStyled'
-import { Form, Formik } from 'formik'
+import { Formik } from 'formik'
 import { REG_INITIAL_VALUES, validationSchema } from './config'
 import TextField from '../../components/TextField/TextField'
 import Select from '../../components/Select/Select'
+import { StackActions, useNavigation } from '@react-navigation/native'
 
-const RegistrationScreen = ({ navigation }) => {
+const RegistrationScreen = () => {
+  const navigation = useNavigation()
   return (
     <TouchableOpacity
       onPress={() => {
@@ -25,26 +20,19 @@ const RegistrationScreen = ({ navigation }) => {
     >
       <ScrollView>
         <View style={registrationStyles.container}>
-          <TextStyled variant="h4">Регистрация</TextStyled>
+          <TextStyled variant='h4'>Регистрация</TextStyled>
           <Formik
             onSubmit={(values) => console.log(values)}
             initialValues={REG_INITIAL_VALUES}
             enableReinitia
             validationSchema={validationSchema}
           >
-            {({
-              values,
-              handleChange,
-              handleSubmit,
-              errors,
-              isValid,
-              dirty,
-            }) => {
+            {({ values, handleChange, handleSubmit, isValid, dirty }) => {
               return (
                 <View style={registrationStyles.formContainer}>
                   <TextField
-                    type="text"
-                    placeholder="ФИО"
+                    type='text'
+                    placeholder='ФИО'
                     onChange={handleChange('name')}
                     value={values.name}
                     //error={errors.name}
@@ -64,7 +52,7 @@ const RegistrationScreen = ({ navigation }) => {
                         value: 'tumgu',
                       },
                     ]}
-                    placeholder="Выберите университет"
+                    placeholder='Выберите университет'
                     onChange={handleChange('university')}
                     //error={errors.university}
                   />
@@ -87,27 +75,27 @@ const RegistrationScreen = ({ navigation }) => {
                         value: '4',
                       },
                     ]}
-                    placeholder="Выберите курс"
+                    placeholder='Выберите курс'
                     onChange={handleChange('course')}
                     //error={errors.course}
                   />
                   <TextField
-                    type="text"
-                    placeholder="Телефон"
+                    type='text'
+                    placeholder='Телефон'
                     onChange={handleChange('phone_number')}
                     value={values.phone_number}
                     //error={errors.phone_number}
                   />
                   <TextField
-                    type="password"
-                    placeholder="Пароль"
+                    type='password'
+                    placeholder='Пароль'
                     onChange={handleChange('password')}
                     value={values.password}
                     //error={errors.password}
                   />
                   <TextField
-                    type="password"
-                    placeholder="Подтвердите пароль"
+                    type='password'
+                    placeholder='Подтвердите пароль'
                     onChange={handleChange('confirmPassword')}
                     value={values.confirmPassword}
                     //error={errors.confirmPassword}
@@ -115,9 +103,16 @@ const RegistrationScreen = ({ navigation }) => {
                   <ButtonStyled
                     disabled={!(dirty && isValid)}
                     onPress={handleSubmit}
-                    title="Зарегистрироваться"
-                    size="long"
-                    color="primary"
+                    title='Зарегистрироваться'
+                    size='long'
+                    color='primary'
+                  />
+
+                  <ButtonStyled
+                    onPress={() => navigation.dispatch(StackActions.pop())}
+                    title='Отмена'
+                    size='long'
+                    color='secondary'
                   />
                 </View>
               )

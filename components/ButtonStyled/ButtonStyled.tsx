@@ -1,14 +1,15 @@
-import { View, Text, Button, TouchableOpacity } from 'react-native'
+import { Text, TouchableOpacity, TouchableOpacityProps } from 'react-native'
 import React from 'react'
 import buttonStyles from './buttonStyles'
 import TextStyled from '../TextStyled'
 
-interface IButtonProps {
+interface IButtonProps extends TouchableOpacityProps {
   onPress: () => void
   title: string
-  color: 'primary' | 'secondary'
-  size: string
+  color?: 'primary' | 'secondary'
+  size?: string
   disabled?: boolean
+  linkToAction?: boolean
 }
 
 const buttonColors = {
@@ -33,17 +34,26 @@ const ButtonStyled = (props: IButtonProps) => {
       onPress={props.onPress}
       touchSoundDisabled
       disabled={props.disabled}
-      style={[
-        buttonStyles.button,
-        {
-          backgroundColor: buttonColors[props.color],
-          width: buttonSizes[props.size].width,
-          height: buttonSizes[props.size].height,
-          opacity: props.disabled ? 0.5 : 1,
-        },
-      ]}
+      style={
+        !props.linkToAction
+          ? [
+              buttonStyles.button,
+              {
+                backgroundColor: buttonColors[props.color],
+                width: buttonSizes[props.size].width,
+                height: buttonSizes[props.size].height,
+                opacity: props.disabled ? 0.5 : 1,
+              },
+            ]
+          : buttonStyles.actionButton
+      }
+      {...props}
     >
-      <TextStyled variant="h5"> {props.title} </TextStyled>
+      {props.linkToAction ? (
+        <Text style={buttonStyles.buttonText}>{props.title}</Text>
+      ) : (
+        <TextStyled variant='h5'> {props.title} </TextStyled>
+      )}
     </TouchableOpacity>
   )
 }

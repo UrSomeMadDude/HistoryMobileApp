@@ -1,49 +1,95 @@
-import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import HomeScreen from './HomeScreen'
-import SecondScreen from './SecondScreen'
+import HistoryScreen from './HistoryScreen/HistoryScreen'
+import VictorinsScreen from './Victorins/VictorinsScreen'
+import { StatusBar } from 'react-native'
+import GamesScreen from './GamesScreen/GamesScreen'
+import TourismScreen from './TourismScreen/TourismScreen'
 
 const MainScreen = () => {
   const Tab = createBottomTabNavigator()
+
   return (
-    <Tab.Navigator
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
-          let iconName
-
-          if (route.name === 'Home' || route.name === 'Second') {
-            iconName = focused
-              ? 'ios-information-circle'
-              : 'ios-information-circle-outline'
-          } else if (route.name === 'Settings') {
-            iconName = focused ? 'ios-list' : 'ios-list-outline'
-          }
-
-          // You can return any component that you like here!
-          return (
-            <Ionicons
-              name={iconName}
-              size={size}
-              color={color}
-            />
-          )
-        },
-        tabBarActiveTintColor: 'tomato',
-        tabBarInactiveTintColor: 'gray',
-        headerShown: false,
-      })}
-    >
-      <Tab.Screen
-        name='Home'
-        component={HomeScreen}
+    <>
+      <StatusBar
+        animated={true}
+        backgroundColor='#E6D5EE'
+        barStyle='dark-content'
       />
-      <Tab.Screen
-        name='Second'
-        component={SecondScreen}
-      />
-    </Tab.Navigator>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName
+
+            switch (route.name) {
+              case 'History': {
+                iconName = focused ? 'book' : 'book-outline'
+                break
+              }
+              case 'Victorins': {
+                iconName = focused ? 'medal' : 'medal-outline'
+                break
+              }
+              case 'Games': {
+                iconName = focused
+                  ? 'game-controller'
+                  : 'game-controller-outline'
+                break
+              }
+              case 'Tourism': {
+                iconName = focused ? 'map' : 'map-outline'
+                break
+              }
+              default: {
+                break
+              }
+            }
+
+            // You can return any component that you like here!
+            return (
+              <Ionicons
+                name={iconName}
+                size={size}
+                color={color}
+              />
+            )
+          },
+          tabBarActiveTintColor: '#40005E',
+          tabBarInactiveTintColor: '#40005E',
+          headerShown: false,
+        })}
+      >
+        <Tab.Screen
+          name='History'
+          options={{
+            tabBarLabel: 'История',
+          }}
+          component={HistoryScreen}
+        />
+        <Tab.Screen
+          name='Victorins'
+          options={{
+            tabBarLabel: 'Викторины',
+          }}
+          component={VictorinsScreen}
+        />
+        <Tab.Screen
+          name='Games'
+          options={{
+            tabBarLabel: 'Игры',
+          }}
+          component={GamesScreen}
+        />
+        <Tab.Screen
+          name='Tourism'
+          options={{
+            tabBarLabel: 'Студтуризм',
+          }}
+          component={TourismScreen}
+        />
+      </Tab.Navigator>
+    </>
   )
 }
 

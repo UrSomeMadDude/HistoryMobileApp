@@ -5,13 +5,15 @@ import loginStyles from './loginStyles'
 import { Formik } from 'formik'
 import TextField from '../../components/TextField/TextField'
 import ButtonStyled from '../../components/ButtonStyled/ButtonStyled'
+import { StackActions, useNavigation } from '@react-navigation/native'
 
 const INITIAL_VALUES = {
   login: '',
   password: '',
 }
 
-const LoginScreen = ({ navigation }): ReactElement<React.FC> => {
+const LoginScreen = (/* { navigation } */): ReactElement<React.FC> => {
+  const navigation = useNavigation()
   return (
     <TouchableOpacity
       onPress={() => {
@@ -21,30 +23,30 @@ const LoginScreen = ({ navigation }): ReactElement<React.FC> => {
     >
       <View style={loginStyles.container}>
         <View style={loginStyles.image}>
-          <Image source={require('../../assets/logo.png')} />
+          <Image source={require('../../assets/images/logo.png')} />
         </View>
         <View style={loginStyles.text}>
-          <TextStyled variant="h2">Авторизация</TextStyled>
+          <TextStyled variant='h2'>Авторизация</TextStyled>
         </View>
         <Formik
           enableReinitialize
           initialValues={INITIAL_VALUES}
           onSubmit={(values) => {
-            console.log(values)
+            navigation.dispatch(StackActions.replace('Main'))
           }}
         >
           {({ handleChange, handleSubmit, values }) => (
             <View style={loginStyles.formSection}>
               <View style={loginStyles.formContainer}>
                 <TextField
-                  type="text"
-                  placeholder="Телефон"
+                  type='text'
+                  placeholder='Телефон'
                   onChange={handleChange('login')}
                   value={values.login}
                 />
                 <TextField
-                  type="password"
-                  placeholder="Пароль"
+                  type='password'
+                  placeholder='Пароль'
                   onChange={handleChange('password')}
                   value={values.password}
                 />
@@ -52,19 +54,19 @@ const LoginScreen = ({ navigation }): ReactElement<React.FC> => {
                   onPress={() => {
                     handleSubmit()
                   }}
-                  title="Вход"
-                  size="long"
-                  color="primary"
+                  title='Вход'
+                  size='long'
+                  color='primary'
                 />
               </View>
-              <TextStyled variant="regular">Не зарегистрированы?</TextStyled>
+              <TextStyled variant='regular'>Не зарегистрированы?</TextStyled>
               <ButtonStyled
                 onPress={() => {
-                  navigation.push('Register')
+                  navigation.dispatch(StackActions.push('Register'))
                 }}
-                title="Зарегистрироваться"
-                size="long"
-                color="secondary"
+                title='Зарегистрироваться'
+                size='long'
+                color='secondary'
               />
             </View>
           )}
