@@ -1,9 +1,9 @@
-import { View, Text, Button, TouchableOpacity } from 'react-native'
+import { Text, TouchableOpacity, TouchableOpacityProps } from 'react-native'
 import React from 'react'
 import buttonStyles from './buttonStyles'
 import TextStyled from '../TextStyled'
 
-interface IButtonProps {
+interface IButtonProps extends TouchableOpacityProps {
   onPress: () => void
   title: string
   color?: 'primary' | 'secondary'
@@ -47,11 +47,12 @@ const ButtonStyled = (props: IButtonProps) => {
             ]
           : buttonStyles.actionButton
       }
+      {...props}
     >
       {props.linkToAction ? (
         <Text style={buttonStyles.buttonText}>{props.title}</Text>
       ) : (
-        <TextStyled variant="h5"> {props.title} </TextStyled>
+        <TextStyled variant='h5'> {props.title} </TextStyled>
       )}
     </TouchableOpacity>
   )

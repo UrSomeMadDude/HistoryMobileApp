@@ -35,4 +35,16 @@ export default StyleSheet.create({
     transform: [{ translateY: -40 }],
     borderRadius: 14,
   },
+
+  shop: {
+    position: 'absolute',
+    top: '35%',
+    left: '95%',
+  },
+
+  exit: {
+    position: 'absolute',
+    top: '35%',
+    left: '75%',
+  },
 })

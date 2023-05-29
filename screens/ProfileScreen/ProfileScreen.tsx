@@ -10,12 +10,12 @@ const ProfileScreen = () => {
   return (
     <>
       <Header
-        text="Профиль"
-        icon="menu-outline"
+        text='Профиль'
+        icon='menu-outline'
       />
       <View style={styles.profile}>
-        <TextStyled variant="profileName">Евгения Олеговна </TextStyled>
-        <TextStyled variant="profileName"> Онегина</TextStyled>
+        <TextStyled variant='profileName'>Евгения Олеговна </TextStyled>
+        <TextStyled variant='profileName'> Онегина</TextStyled>
         <View style={styles.profilePhoto}>
           <View style={styles.image}>
             <Image
@@ -23,11 +23,11 @@ const ProfileScreen = () => {
                 width: '100%',
                 height: '100%',
               }}
-              source={require('../../assets/imgDogCard.png')}
+              source={require('../../assets/images/imgDogCard.png')}
             />
           </View>
           <View style={styles.points}>
-            <TextStyled variant="regular">Накопленные баллы</TextStyled>
+            <TextStyled variant='regular'>Накопленные баллы</TextStyled>
             <Text style={styles.number}>240</Text>
           </View>
         </View>
@@ -35,17 +35,17 @@ const ProfileScreen = () => {
           <Text style={styles.text}>Личная информация:</Text>
           <LidMagnet
             disabled
-            title="Университет"
+            title='Университет'
             subtext={info.university}
           />
           <LidMagnet
             disabled
-            title="Курс"
+            title='Курс'
             subtext={`${info.course} курс`}
           />
           <LidMagnet
             disabled
-            title="Телефон"
+            title='Телефон'
             subtext={info.phone_number}
           />
         </View>

@@ -36,7 +36,7 @@ const HistoryScreen = ({ navigation }) => {
         onClose={() => setModalVisible(false)}
         options={themeOptions}
       />
-      <Header text="История" />
+      <Header text='История' />
       <TouchableOpacity
         onPress={() => {
           Keyboard.dismiss()
@@ -45,14 +45,18 @@ const HistoryScreen = ({ navigation }) => {
       >
         <View style={styles.searchText}>
           <SearchTextField
-            title="Поиск по темам"
+            title='Поиск по темам'
             value={text}
             onChange={(text) => {
               setText(text)
               if (text === '') {
                 setThemes(themeOptions)
               }
-              setThemes(themesList.filter((theme) => theme.includes(text)))
+              setThemes(
+                themesList.filter((theme) =>
+                  theme.toLowerCase().includes(text.toLowerCase())
+                )
+              )
             }}
           />
         </View>
@@ -72,7 +76,7 @@ const HistoryScreen = ({ navigation }) => {
                   setModalVisible(true)
                 }}
               >
-                <TextStyled variant="sectionTitle">{theme}</TextStyled>
+                <TextStyled variant='sectionTitle'>{theme}</TextStyled>
               </TouchableOpacity>
             ))}
           </View>

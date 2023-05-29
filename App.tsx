@@ -9,6 +9,7 @@ import LoginScreen from './screens/LoginScreen/LoginScreen'
 import RegistrationScreen from './screens/RegistartionScreen/RegistrationScreen'
 import HistoryLessonScreen from './screens/HistoryLessonScreen/HistoryLessonScreen'
 import ProfileScreen from './screens/ProfileScreen/ProfileScreen'
+import TourismOptionScreen from './screens/TourismOptionScreen/TourismOptionScreen'
 
 export default function App() {
   const Stack = createNativeStackNavigator()
@@ -30,8 +31,8 @@ export default function App() {
       <>
         <StatusBar
           animated={true}
-          backgroundColor="#fff"
-          barStyle="dark-content"
+          backgroundColor='#fff'
+          barStyle='dark-content'
         />
         <NavigationContainer>
           <Stack.Navigator
@@ -40,24 +41,28 @@ export default function App() {
             }}
           >
             <Stack.Screen
-              name="Login"
+              name='Login'
               component={LoginScreen}
             />
             <Stack.Screen
-              name="Register"
+              name='Register'
               component={RegistrationScreen}
             />
             <Stack.Screen
-              name="Main"
+              name='Main'
               component={MainScreen}
             />
             <Stack.Screen
-              name="HistoryLesson"
+              name='HistoryLesson'
               component={HistoryLessonScreen}
             />
             <Stack.Screen
-              name="Profile"
+              name='Profile'
               component={ProfileScreen}
+            />
+            <Stack.Screen
+              name='TourismOption'
+              component={TourismOptionScreen}
             />
           </Stack.Navigator>
         </NavigationContainer>

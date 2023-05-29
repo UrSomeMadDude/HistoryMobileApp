@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, TextProps, View } from 'react-native'
 import React, { ReactElement, ReactNode } from 'react'
 
 interface IFontProps {
@@ -73,7 +73,7 @@ const textVariants: ITextVariants = {
   },
 }
 
-interface ITextStyled {
+interface ITextStyled extends TextProps {
   children: ReactNode
   variant: string
 }

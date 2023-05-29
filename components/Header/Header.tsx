@@ -32,12 +32,12 @@ const Header: React.FC<HeaderProps> = ({
       >
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Ionicons
-            name="chevron-back-outline"
+            name='chevron-back-outline'
             size={24}
-            color="#3C1251"
+            color='#3C1251'
           />
         </TouchableOpacity>
-        <TextStyled variant="headerTitle">{text}</TextStyled>
+        <TextStyled variant='headerTitle'>{text}</TextStyled>
       </View>
     )
   }
@@ -45,12 +45,12 @@ const Header: React.FC<HeaderProps> = ({
     <View style={styles.header}>
       <TouchableOpacity onPress={() => navigation.navigate('#')}>
         <Ionicons
-          name="newspaper-outline"
+          name='newspaper-outline'
           size={24}
-          color="#3C1251"
+          color='#3C1251'
         />
       </TouchableOpacity>
-      <TextStyled variant="headerTitle">{text}</TextStyled>
+      <TextStyled variant='headerTitle'>{text}</TextStyled>
 
       <TouchableOpacity
         style={
@@ -69,31 +69,35 @@ const Header: React.FC<HeaderProps> = ({
         <Ionicons
           name={icon}
           size={24}
-          color="#3C1251"
+          color='#3C1251'
         />
       </TouchableOpacity>
       {isTapped && (
-        <View style={styles.dropdownList}>
-          <TouchableOpacity onPress={() => {}}>
-            <Ionicons
-              name="cart-outline"
-              size={24}
-              color="#3C1251"
-            />
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => {
-              navigation.dispatch(StackActions.popToTop())
-              navigation.dispatch(StackActions.replace('Login'))
-            }}
-          >
-            <Ionicons
-              name="exit-outline"
-              size={24}
-              color="#3C1251"
-            />
-          </TouchableOpacity>
-        </View>
+        <TouchableOpacity
+          style={styles.shop}
+          onPress={() => {}}
+        >
+          <Ionicons
+            name='cart-outline'
+            size={24}
+            color='#3C1251'
+          />
+        </TouchableOpacity>
+      )}
+      {isTapped && (
+        <TouchableOpacity
+          style={styles.exit}
+          onPress={() => {
+            navigation.dispatch(StackActions.popToTop())
+            navigation.dispatch(StackActions.replace('Login'))
+          }}
+        >
+          <Ionicons
+            name='exit-outline'
+            size={24}
+            color='#3C1251'
+          />
+        </TouchableOpacity>
       )}
     </View>
   )

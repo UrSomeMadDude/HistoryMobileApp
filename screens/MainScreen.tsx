@@ -1,12 +1,11 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import SecondScreen from './SecondScreen'
 import HistoryScreen from './HistoryScreen/HistoryScreen'
-import { useNavigation } from '@react-navigation/native'
 import VictorinsScreen from './Victorins/VictorinsScreen'
 import { StatusBar } from 'react-native'
 import GamesScreen from './GamesScreen/GamesScreen'
+import TourismScreen from './TourismScreen/TourismScreen'
 
 const MainScreen = () => {
   const Tab = createBottomTabNavigator()
@@ -15,8 +14,8 @@ const MainScreen = () => {
     <>
       <StatusBar
         animated={true}
-        backgroundColor="#E6D5EE"
-        barStyle="dark-content"
+        backgroundColor='#E6D5EE'
+        barStyle='dark-content'
       />
       <Tab.Navigator
         screenOptions={({ route }) => ({
@@ -62,32 +61,32 @@ const MainScreen = () => {
         })}
       >
         <Tab.Screen
-          name="History"
+          name='History'
           options={{
             tabBarLabel: 'История',
           }}
           component={HistoryScreen}
         />
         <Tab.Screen
-          name="Victorins"
+          name='Victorins'
           options={{
             tabBarLabel: 'Викторины',
           }}
           component={VictorinsScreen}
         />
         <Tab.Screen
-          name="Games"
+          name='Games'
           options={{
             tabBarLabel: 'Игры',
           }}
           component={GamesScreen}
         />
         <Tab.Screen
-          name="Tourism"
+          name='Tourism'
           options={{
             tabBarLabel: 'Студтуризм',
           }}
-          component={SecondScreen}
+          component={TourismScreen}
         />
       </Tab.Navigator>
     </>

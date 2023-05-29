@@ -7,7 +7,7 @@ import { victorins } from './config'
 const VictorinsScreen = () => {
   return (
     <>
-      <Header text="Викторины" />
+      <Header text='Викторины' />
       <ScrollView>
         <View style={styles.victorins}>
           {victorins.map((victorin) => (
@@ -21,7 +21,7 @@ const VictorinsScreen = () => {
                     width: '100%',
                     height: '100%',
                   }}
-                  source={require('../../assets/victorin.png')}
+                  source={require('../../assets//images/victorin.png')}
                 />
                 <Text style={styles.text}>Пример Викторины</Text>
               </View>
