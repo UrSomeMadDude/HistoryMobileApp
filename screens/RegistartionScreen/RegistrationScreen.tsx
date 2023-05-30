@@ -9,7 +9,7 @@ import TextField from '../../components/TextField/TextField'
 import Select from '../../components/Select/Select'
 import { StackActions, useNavigation } from '@react-navigation/native'
 
-const RegistrationScreen = () => {
+const RegistrationScreen = (/* { navigation } */) => {
   const navigation = useNavigation()
   return (
     <TouchableOpacity
@@ -24,7 +24,7 @@ const RegistrationScreen = () => {
           <Formik
             onSubmit={(values) => console.log(values)}
             initialValues={REG_INITIAL_VALUES}
-            enableReinitia
+            enableReinitialize
             validationSchema={validationSchema}
           >
             {({ values, handleChange, handleSubmit, isValid, dirty }) => {
@@ -53,7 +53,9 @@ const RegistrationScreen = () => {
                       },
                     ]}
                     placeholder='Выберите университет'
-                    onChange={handleChange('university')}
+                    /*  onChange={handleChange('university')} */
+                    selectedValue={values.university}
+                    onValueChange={handleChange('university')}
                     //error={errors.university}
                   />
                   <Select
@@ -76,7 +78,8 @@ const RegistrationScreen = () => {
                       },
                     ]}
                     placeholder='Выберите курс'
-                    onChange={handleChange('course')}
+                    onValueChange={handleChange('course')}
+                    selectedValue={values.course}
                     //error={errors.course}
                   />
                   <TextField

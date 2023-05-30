@@ -30,7 +30,9 @@ const Header: React.FC<HeaderProps> = ({
           },
         ]}
       >
-        <TouchableOpacity onPress={() => navigation.goBack()}>
+        <TouchableOpacity
+          onPress={() => navigation.dispatch(StackActions.pop())}
+        >
           <Ionicons
             name='chevron-back-outline'
             size={24}
@@ -43,7 +45,9 @@ const Header: React.FC<HeaderProps> = ({
   }
   return (
     <View style={styles.header}>
-      <TouchableOpacity onPress={() => navigation.navigate('#')}>
+      <TouchableOpacity
+        onPress={() => navigation.dispatch(StackActions.push('News'))}
+      >
         <Ionicons
           name='newspaper-outline'
           size={24}
@@ -60,7 +64,7 @@ const Header: React.FC<HeaderProps> = ({
         }
         onPress={
           icon !== 'menu-outline'
-            ? () => navigation.navigate('Profile')
+            ? () => navigation.dispatch(StackActions.push('Profile'))
             : () => {
                 setIsTapped(!isTapped)
               }

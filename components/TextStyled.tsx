@@ -19,9 +19,16 @@ interface ITextVariants {
   headerTitle: IFontProps
   lessonTitle: IFontProps
   profileName: IFontProps
+  news: IFontProps
 }
 
 const textVariants: ITextVariants = {
+  news: {
+    fontSize: 13,
+    fontWeight: '300',
+    color: '#000',
+    lineHeight: 15.9,
+  },
   regular: {
     fontWeight: '400',
     fontSize: 16,

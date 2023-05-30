@@ -10,6 +10,7 @@ import RegistrationScreen from './screens/RegistartionScreen/RegistrationScreen'
 import HistoryLessonScreen from './screens/HistoryLessonScreen/HistoryLessonScreen'
 import ProfileScreen from './screens/ProfileScreen/ProfileScreen'
 import TourismOptionScreen from './screens/TourismOptionScreen/TourismOptionScreen'
+import NewsScreen from './screens/NewsScreen/NewsScreen'
 
 export default function App() {
   const Stack = createNativeStackNavigator()
@@ -63,6 +64,10 @@ export default function App() {
             <Stack.Screen
               name='TourismOption'
               component={TourismOptionScreen}
+            />
+            <Stack.Screen
+              name='News'
+              component={NewsScreen}
             />
           </Stack.Navigator>
         </NavigationContainer>

@@ -1,22 +1,28 @@
 import { View, Text } from 'react-native'
-import React from 'react'
-import RNPickerSelect from 'react-native-picker-select'
-import ErrorMessage from '../ErrorMessage'
-import TextStyled from '../TextStyled'
+import React, { useState } from 'react'
+/* import RNPickerSelect from 'react-native-picker-select' */
+import { Picker, PickerProps } from '@react-native-picker/picker'
 
 interface IOption {
   label: string
   value: string | Number
 }
 
-interface ISelect {
-  options: IOption[]
-  placeholder: string
+interface ISelect extends PickerProps {
+  options?: IOption[]
+  placeholder?: string
   onChange: () => void
   error?: string
 }
 
-const Select = (props: ISelect) => {
+const Select: React.FC<ISelect> = ({
+  onChange,
+  options = [],
+  error = '',
+  placeholder = '',
+  ...props
+}) => {
+  const [selectedLanguage, setSelectedLanguage] = useState()
   return (
     <View
       style={{
@@ -29,20 +35,32 @@ const Select = (props: ISelect) => {
         backgroundColor: '#DFD0E8',
       }}
     >
-      <RNPickerSelect
-        onValueChange={props.onChange}
+      <Picker
+        onValueChange={onChange}
+        {...props}
+      >
+        {options.map((option, i) => (
+          <Picker.Item
+            key={i}
+            label={option.label}
+            value={option.value}
+          />
+        ))}
+      </Picker>
+      {/* <RNPickerSelect
+        onValueChange={onChange}
         pickerProps={{
           style: {
             color: '#000',
           },
         }}
         placeholder={{
-          label: props.placeholder,
+          label: placeholder,
           color: 'rgba(0, 0, 0, 0.41)',
           value: '',
         }}
-        items={props.options}
-      />
+        items={options}
+      /> */}
     </View>
   )
 }

@@ -26,7 +26,10 @@ const LoginScreen = (/* { navigation } */): ReactElement<React.FC> => {
           <Image source={require('../../assets/images/logo.png')} />
         </View>
         <View style={loginStyles.text}>
-          <TextStyled variant='h2'>Авторизация</TextStyled>
+          <TextStyled variant='sectionOption'>Севастопольский</TextStyled>
+          <TextStyled variant='sectionOption'>
+            государственный университет
+          </TextStyled>
         </View>
         <Formik
           enableReinitialize

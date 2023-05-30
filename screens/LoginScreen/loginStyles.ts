@@ -13,7 +13,12 @@ export default StyleSheet.create({
     marginTop: 30,
   },
   text: {
+    display: 'flex',
     marginTop: 20,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 300,
   },
   formSection: {
     display: 'flex',
